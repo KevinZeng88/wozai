@@ -251,6 +251,78 @@ h1 {
   background: var(--accent-soft);
 }
 
+.register-demo {
+  background:
+    radial-gradient(560px 220px at 10% 0%, rgba(201, 157, 115, 0.18), transparent 62%),
+    rgba(247, 241, 232, 0.88);
+}
+
+.register-quote {
+  margin-top: 1rem;
+  border-left: 3px solid rgba(138, 90, 54, 0.55);
+  padding: 0.7rem 0.85rem;
+  border-radius: 0 6px 6px 0;
+  background: rgba(138, 90, 54, 0.08);
+  color: #4d3e2f;
+  font-size: 0.95rem;
+}
+
+.register-form {
+  margin-top: 1.05rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.form-field span {
+  font-size: 0.76rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid rgba(107, 89, 68, 0.23);
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.7rem 0.78rem;
+  font: inherit;
+  line-height: 1.55;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--accent-soft);
+  box-shadow: 0 0 0 3px rgba(184, 139, 103, 0.14);
+}
+
+.register-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.submit-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .qingming {
   background:
     radial-gradient(500px 220px at 90% 0%, rgba(199, 171, 148, 0.27), transparent 60%),
@@ -305,6 +377,10 @@ h1 {
 
   .section {
     padding: 1.2rem 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
   }
 
   .concept-grid,

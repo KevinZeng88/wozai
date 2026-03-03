@@ -9,6 +9,7 @@
         <a href="#concept">理念</a>
         <a href="#security">安全</a>
         <a href="#features">功能</a>
+        <a href="#register-demo">注册示例</a>
         <a href="#qingming">清明</a>
       </nav>
     </header>
@@ -23,6 +24,7 @@
         </p>
         <div class="hero-actions">
           <a href="#features" class="btn btn-primary">查看产品原型</a>
+          <a href="#register-demo" class="btn btn-ghost">体验注册示例</a>
           <a href="#security" class="btn btn-ghost">阅读安全承诺</a>
         </div>
       </section>
@@ -71,6 +73,48 @@
         </div>
       </section>
 
+      <section id="register-demo" class="section register-demo">
+        <div class="section-head">
+          <p class="section-kicker">注册示例</p>
+          <h2>来自示例页的轻量创建表单，已并入首页。</h2>
+        </div>
+        <p class="register-quote">
+          不需要完美。你记住的那个样子，就是最真实的 TA。
+        </p>
+        <form class="register-form" @submit.prevent="submitDemo">
+          <div class="form-grid">
+            <label class="form-field">
+              <span>TA 叫什么名字</span>
+              <input v-model.trim="demoForm.name" type="text" placeholder="比如：爷爷、妈妈、小明…" required />
+            </label>
+            <label class="form-field">
+              <span>TA 与你的关系</span>
+              <input v-model.trim="demoForm.relation" type="text" placeholder="比如：我的外婆、我最好的朋友…" />
+            </label>
+          </div>
+          <label class="form-field">
+            <span>TA 是个怎样的人</span>
+            <textarea
+              v-model.trim="demoForm.personality"
+              rows="4"
+              placeholder="比如：话不多但很温柔，喜欢喝茶，总爱叫我的小名，做得一手好饭…"
+            />
+          </label>
+          <label class="form-field">
+            <span>关于 TA 的一段重要记忆</span>
+            <textarea
+              v-model.trim="demoForm.memory"
+              rows="4"
+              placeholder="比如：每次我考试回家，TA都在门口等，从不问分数，只说“饿了吧，先吃饭”…"
+            />
+          </label>
+          <div class="register-actions">
+            <button class="btn btn-primary" type="submit">提交示例</button>
+            <p v-if="submitNote" class="submit-note">{{ submitNote }}</p>
+          </div>
+        </form>
+      </section>
+
       <section id="qingming" class="section qingming">
         <div class="section-head">
           <p class="section-kicker">清明纪念</p>
@@ -101,7 +145,21 @@
 </template>
 
 <script setup lang="ts">
+import { reactive, ref } from 'vue'
+
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000'
+const submitNote = ref('')
+
+const demoForm = reactive({
+  name: '',
+  relation: '',
+  personality: '',
+  memory: '',
+})
+
+function submitDemo(): void {
+  submitNote.value = `已收集示例：${demoForm.name}。当前为静态原型，后续将接入真实注册与加密存储。`
+}
 
 const conceptCards = [
   {
